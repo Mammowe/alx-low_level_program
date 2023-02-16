@@ -1,6 +1,8 @@
 #include <stdio.h>
 
-/* this main returns a zero */
+/* this main returns a zero
+ * return: 0 (success)
+ */
 
 
 
