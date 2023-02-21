@@ -1,5 +1,6 @@
 #include "main.h"
 
+
 /**
  * add - entry point
  * 
@@ -9,6 +10,7 @@
  * Description: take two intergers add the together
  *
  * Return: the sum of two intergers
+ *
  */
 
 int add(int i, int j)
@@ -18,3 +20,4 @@ int add(int i, int j)
 
 
 }
+
