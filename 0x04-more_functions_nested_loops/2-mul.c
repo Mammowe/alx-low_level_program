@@ -1,0 +1,18 @@
+#include "main.h"
+
+/**
+ * mul - entry point
+ *
+ * @i: will be the first interger
+ * @j: the second interger
+ *
+ * Description: 'take two intergers and multiply them together'
+ *
+ * Return: the product of the 2 intergers
+ *
+ */
+
+int mul(int i, int j)
+{
+	return((i * j));
+}
