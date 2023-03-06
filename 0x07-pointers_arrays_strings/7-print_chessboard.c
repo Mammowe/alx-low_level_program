@@ -1,28 +1,20 @@
 #include "main.h"
-#include <stdio.h>
-
 /**
-*print_chessboard- Entry point
-*
-*Description: prints a chessboard
-*@a: input variable
-*
-*Return:
-*/
-
+ * print_chessboard - Entry point
+ * @a: array
+ * Return: Always 0 (Success)
+ */
 void print_chessboard(char (*a)[8])
 {
-	int r, n;
+	int i;
+	int j;
 
-	for (r = 0; r < 8; r++)
+	for (i = 0; i < 8; i++)
 	{
-		for (n = 0; n < 8; n++)
-		{
-			_putchar(a[r][n]);
-		}
-		_putchar(10);
+		for (j = 0; j < 8; j++)
+			_putchar(a[i][j]);
+		_putchar('\n');
 	}
-
 }
 
 
