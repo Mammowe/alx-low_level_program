@@ -10,7 +10,7 @@
  *Return: a pointer to the first occurrence of the characte
  */
 
-char *_strchr(char *s, char c)
+char *_strchr(char *s, char c);
 {
 	int i;
 
@@ -26,4 +26,5 @@ char *_strchr(char *s, char c)
 
 
 }
+
 
