@@ -8,7 +8,7 @@
 *@s: input variable
 *@to: input variable 2
 *
-*Return:
+*Return: Always 0 (Success)
 */
 
 void set_string(char **s, char *to)
