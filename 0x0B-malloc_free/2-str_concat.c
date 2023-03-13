@@ -1,53 +1,85 @@
 #include "main.h"
-#include <stdio.h>
+		
 #include <stdlib.h>
-
+		
 /**
- * str_concat- entry point
- * Description: Function
- * @s1: Input variable
- * @s2: Input variable 2
- * Return: pointer
+		
+ * str_concat - get ends of input and add together for size
+		
+ * @s1: input one to concat
+		
+ * @s2: input two to concat
+		
+ * Return: concat of s1 and s2
+		
  */
+		
 char *str_concat(char *s1, char *s2)
+		
 {
-	int end1, end2, i = 0;
-	char *array;
+		
+	char *conct;
+		
+	int i, ci;
+		
 
-	if (s1 == NULL || s2 == NULL)
-	{
-		s1 = s2 = "";
-	}
-	for (end1 = 0; end1 <= *s1; end1++)
-	{
+		
+	if (s1 == NULL)
+		
+		s1 = "";
+		
+	if (s2 == NULL)
+		
+		s2 = "";
+		
 
-	}
-	for (end2 = 0; end2 <= *s2; end2++)
-	{
+		
+		i = ci = 0;
+		
+	while (s1[i] != '\0')
+		
+		i++;
+		
+	while (s2[ci] != '\0')
+		
+		ci++;
+		
+	conct = malloc(sizeof(char) * (i + ci + 1));
+		
 
-	}
-
-	array = malloc(sizeof(char) * (end1 + end2 + 1));
-
-	if (array == NULL)
-	{
+		
+	if (conct == NULL)
+		
 		return (NULL);
-	}
-
-	while (*s1)
+		
+	i = ci = 0;
+		
+	while (s1[i] != '\0')
+		
 	{
-		array[i] = *s1;
+		
+		conct[i] = s1[i];
+		
 		i++;
-		s1++;
+		
 	}
+		
 
-	while (*s2)
+		
+	while (s2[ci] != '\0')
+		
 	{
-		array[i] = *s2;
-		i++;
-		s2++;
+		
+		conct[i] = s2[ci];
+		
+		i++, ci++;
+		
 	}
-	return (array);
+		
+	conct[i] = '\0';
+		
+	return (conct);
+		
 }
 
 
