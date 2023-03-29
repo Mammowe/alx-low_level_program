@@ -1,119 +1,100 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
 
 /**
- * main - multiplies two positive numbers
+ * multiply - multiply two numbers as strings
+ * @num1: Pointer to the memory previously allocated with a call to malloc
+ * @num2: Size of the allocated space for ptr
+ * Return: result of the multiplication
+ */
+char *multiply(char *num1, char *num2)
+{
+int len1 = strlen(num1);
+int len2 = strlen(num2);
+int *result = calloc(len1 + len2, sizeof(int));
+char *res = calloc(len1 + len2 + 1, sizeof(char));
+int i, j;
+
+for (i = len1 - 1; i >= 0; i--)
+{
+for (j = len2 - 1; j >= 0; j--)
+{
+int product = (num1[i] - '0') * (num2[j] - '0');
+int sum = result[i + j + 1] + product;
+result[i + j + 1] = sum % 10;
+result[i + j] += sum / 10;
+}
+}
+i = 0;
+while (i < len1 + len2 && result[i] == 0)
+{
+i++;
+}
+if (i == len1 + len2)
+{
+res[0] = '0';
+res[1] = '\0';
+return (res);
+}
+j = 0;
+while (i < len1 + len2)
+{
+res[j] = result[i] + '0';
+i++;
+j++;
+}
+res[j] = '\0';
+free(result);
+return (res);
+}
+
+/**
+ * is_digit_string - check if a string
+ * @str: string to check
+ * Return: result of check
+ */
+int is_digit_string(char *str)
+{
+int i = 0;
+
+while (str[i] != '\0')
+{
+if (!isdigit(str[i]))
+{
+return (0);
+}
+i++;
+}
+return (1);
+}
+
+/**
+ * main - run the program
  * @argc: argument count
- * @argv: argument vector
- *
- * Return: 0 on success, 98 on failure
+ * @argv: argument array
+ * Return: 0 for success
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-    int num1, num2, result;
+char *num1 = argv[1];
+char *num2 = argv[2];
+char *res = multiply(num1, num2);
 
-    if (argc != 3 || !is_integer(argv[1]) || !is_integer(argv[2]))
-    {
-        print_error("Error");
-        exit(98);
-    }
-
-    num1 = parse_integer(argv[1]);
-    num2 = parse_integer(argv[2]);
-
-    result = multiply(num1, num2);
-
-    print_number(result);
-    _putchar('\n');
-
-    return (0);
+if (argc != 3)
+{
+printf("Error\n");
+return (98);
 }
-
-/**
- * print_error - prints an error message to stderr
- * @msg: the error message to print
- */
-void print_error(char *msg)
+if (!is_digit_string(argv[1]) || !is_digit_string(argv[2]))
 {
-    while (*msg)
-    {
-        _putchar(*msg++);
-    }
-    _putchar('\n');
+printf("Error\n");
+return (98);
 }
-
-/**
- * is_integer - checks if a string is an integer
- * @str: the string to check
- *
- * Return: 1 if the string is an integer, 0 otherwise
- */
-int is_integer(char *str)
-{
-    if (*str == '-')
-        str++;
-
-    while (*str)
-    {
-        if (!isdigit(*str))
-            return (0);
-        str++;
-    }
-
-    return (1);
-}
-
-/**
- * parse_integer - parses an integer from a string
- * @str: the string to parse
- *
- * Return: the integer value of the string
- */
-int parse_integer(const char *str)
-{
-    int value = 0;
-
-    while (*str)
-    {
-        value *= 10;
-        value += (*str - '0');
-        str++;
-    }
-
-    return (value);
-}
-
-/**
- * multiply - multiplies two integers
- * @num1: the first integer
- * @num2: the second integer
- *
- * Return: the product of the two integers
- */
-int multiply(int num1, int num2)
-{
-    return (num1 * num2);
-}
-
-/**
- * print_number - prints a number to stdout
- * @num: the number to print
- */
-void print_number(int num)
-{
-    if (num < 0)
-    {
-        _putchar('-');
-        num *= -1;
-    }
-
-    if (num / 10)
-        print_number(num / 10);
-
-    _putchar((num % 10) + '0');
+printf("%s\n", res);
+free(res);
+return (0);
 }
 
 
