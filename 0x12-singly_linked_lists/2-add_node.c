@@ -1,5 +1,5 @@
 #include "lists.h"
-
+#include <stdio.h>
 /**
  * _strlen - returns the length of a string using recursion
  * @s: pointer that has the address of the string
